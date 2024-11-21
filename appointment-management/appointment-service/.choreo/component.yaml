@@ -1,4 +1,4 @@
-schemaVersion: 1.1
+schemaVersion: 1.0
 endpoints:
   # +required Unique name for the endpoint. (This name will be used when generating the managed API)
   - name: appointments
@@ -10,3 +10,18 @@ endpoints:
     # Accepted values: Project|Organization|Public.
     networkVisibility: Public
     schemaFilePath: openapi.yaml
+dependencies:
+    serviceReferences:
+    - name: database:devHrDb
+      connectionConfig: 01efa7e3-b9e5-1458-a2cb-8f79f79b9d09
+      env:
+      - from: HostName
+        to: CHOREO_DATABASE_CONNECTION_HOSTNAME
+      - from: Port
+        to: CHOREO_DATABASE_CONNECTION_PORT
+      - from: Username
+        to: CHOREO_DATABASE_CONNECTION_USERNAME
+      - from: Password
+        to: CHOREO_DATABASE_CONNECTION_PASSWORD
+      - from: DatabaseName
+        to: CHOREO_DATABASE_CONNECTION_DATABASENAME
